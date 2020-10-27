@@ -6,6 +6,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libevent-dev libncurses5-d
 
 RUN git clone https://github.com/tmux/tmux.git /tmux
 WORKDIR /tmux
+RUN git checkout 3.1b # Uncomment to test against master
 RUN sh autogen.sh
 RUN ./configure
 RUN make
@@ -16,3 +17,5 @@ USER user
 WORKDIR /user/home
 
 COPY .tmux.conf /home/user/.tmux.conf
+
+CMD tmux start-server & tmux new -t session1
