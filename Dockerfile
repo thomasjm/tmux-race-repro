@@ -18,4 +18,4 @@ WORKDIR /user/home
 
 COPY .tmux.conf /home/user/.tmux.conf
 
-CMD tmux start-server & tmux new -t session1
+CMD tmux -vv start-server & tmux -vv new -t session1
